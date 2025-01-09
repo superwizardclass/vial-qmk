@@ -219,10 +219,6 @@ float plover_gb_song[][2] = SONG(PLOVER_GOODBYE_SOUND);
 
 bool play_encoder_melody(uint8_t index, bool clockwise);
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef ENCODER_MAP_ENABLE
     if (IS_ENCODEREVENT(record->event) && record->event.pressed) {
@@ -319,7 +315,7 @@ float melody[8][2][2] = {
 deferred_token tokens[8];
 
 uint32_t reset_note(uint32_t trigger_time, void *note) {
-    *(float*)note = 440.0f;
+    *(float *)note = 440.0f;
     return 0;
 }
 
